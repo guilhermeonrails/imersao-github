@@ -1,0 +1,417 @@
+:root {
+    --primary-color: #27374D;
+    --secondary-color: #526D82;
+    --background-color: #DDE6ED;
+    --white-color: #DDE6ED;
+}
+
+html, body {
+    height: 100%; /* Garante que html e body ocupem 100% da viewport */
+    overflow-x: hidden; /* Previne scroll horizontal se algo vazar */
+    scroll-behavior: smooth; /* Adiciona rolagem suave */
+}
+
+body {
+    font-family: 'SF Mono', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: #333;
+
+    /*  Ativa o "scroll snapping" verticalmente no body */
+    scroll-snap-type: y mandatory; /* 'y' para rolagem vertical, 'mandatory' para "snap" sempre */
+}
+
+header {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    text-align: center;
+    padding: 1em 0;
+    /* Posicionamento fixo no topo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; /* Garante que o header fique acima de outros conteúdos */
+}
+
+header h1 {
+    font-size: 3em;
+    font-weight: 900;
+}
+
+header p {
+    font-weight: 300;
+    font-size: 1.2em;
+    font-weight: 300;
+}
+
+nav {
+    background-color: var(--secondary-color);
+    padding: 0.8em 0;
+    text-align: center;
+    /* Posicionamento fixo abaixo do header */
+    position: fixed;
+    top: 8em; /* Ajuste este valor para corresponder à altura do seu header */
+    left: 0;
+    width: 100%;
+    z-index: 100; /* Garante que a nav fique acima de outros conteúdos */
+}
+
+nav a {
+    color: var(--white-color);
+    text-decoration: none;
+    padding: 0.8em 1.5em;
+    display: inline-block;
+    font-size: 1.1em;
+}
+
+main {
+    /* Faz o main ocupar toda a altura disponível abaixo do header e nav */
+    margin-top: 12em; /* Ajuste este valor para a soma das alturas do header e nav */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto; /* Altura automática para se ajustar ao conteúdo das sections, que serão 100vh */
+}
+
+section {
+    /* Faz cada section ocupar 100% da altura da viewport */
+    height: 100vh;
+    scroll-snap-align: start; /* Garante que o "snap" comece no topo de cada section */
+    padding: 1.5em;
+    box-sizing: border-box; /* Garante que padding não aumente o tamanho total da section */
+
+    display: flex; /* Para centralizar verticalmente o conteúdo */
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    align-items: center; /* Opcional: centraliza horizontalmente se desejar */
+    text-align: center; /* Opcional: centraliza texto se desejar */
+}
+
+
+/* Estilos específicos de cada seção (conteúdo interno) */
+
+#banner-principal article {
+    padding: 1.5em;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    max-width: 900px; /* Limita a largura do conteúdo para telas grandes */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+#banner-principal article h2 {
+    color: var(--primary-color);
+    margin-top: 0;
+    font-size: 2em;
+    margin-bottom: 1em;
+    font-weight: 500;
+}
+
+#banner-principal article p {
+    line-height: 1.6;
+    font-size: 1.1em;
+    margin-bottom: 1em;
+    font-weight: 300;
+}
+
+#banner-principal article a {
+    display: inline-block;
+    background-color: var(--secondary-color); /* Cor de fundo inicial sólida (fallback) */
+    background-image: linear-gradient(to right, var(--secondary-color) 50%, var(--primary-color) 50%); /* Gradiente linear: primária até 50%, secundária depois */
+    background-size: 200% 100%; /* Largura do fundo 2x maior que o botão */
+    background-position: right bottom; /* Posição inicial do fundo: lado direito */
+    color: var(--background-color);
+    padding: 0.8em 1.5em;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1em;
+    font-size: 3em;
+    transition: transform 0.6s ease, background-position 0.6s ease, box-shadow 0.6s ease, color 0.6s ease; /* Transições: posição, escala, sombra, cor */
+}
+
+#banner-principal article a:hover {
+    transform: scale(1.02);
+    background-position: left bottom; /* Move o fundo para a esquerda para revelar a cor secundária */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    color: var(--white-color); /* Mantém a cor do texto branca no hover */
+}
+
+#sobre-curso h2 {
+    margin-top: 1em;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+#sobre-curso > div {
+    display:flex;
+    max-width: 1200px; /* Limita a largura do conteúdo para telas grandes */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    align-items: center; /* Alinha verticalmente os itens do flex container */
+}
+
+#sobre-curso article {
+    flex: 2;
+    background-color: var(--white-color);
+    padding: 1.5em;
+    border-radius: 8px;
+    margin: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    text-align: left; /* Texto alinhado à esquerda dentro do artigo */
+}
+
+#sobre-curso aside {
+    flex: 1; /* Aside ocupa menos espaço */
+    padding: 1.5em;
+    margin: 1em;
+}
+
+#sobre-curso aside img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#sobre-curso article p {
+    line-height: 1.6;
+    font-size: 1.1em; /* Reduzi para 1.1em para melhor leitura em tela cheia */
+}
+#sobre-curso article p:nth-child(2) {
+    font-size: 1.1em; /* Reduzi para 1.1em para manter consistência */
+}
+
+#sobre-curso ul {
+    list-style-type: disc;
+    padding-left: 2em;
+    margin-top: 1em; /* Reduzi margin-top */
+    font-size: 1.1em; /* Reduzi para 1.1em para melhor leitura em tela cheia */
+}
+
+
+#modulos h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+#modulos > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza módulos horizontalmente */
+    max-width: 1200px; /* Limita a largura para telas grandes */
+    margin: 0 auto; /* Centraliza container de módulos */
+}
+
+#modulos article {
+    flex: 1 1 300px;
+    background-color: var(--white-color);
+    padding: 1.5em;
+    border-radius: 8px;
+    margin: 1em;
+    box-shadow: 1px -8px 25px 4px rgba(39,55,77,0.4);
+}
+
+#modulos article img {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 1em;
+}
+
+#modulos article h3 {
+    color: var(--secondary-color);
+    margin-top: 0;
+    font-size: 1.2em;
+    margin-bottom: 2em;
+}
+
+#modulos article p {
+    line-height: 1.6;
+    font-size: 1.1em; /* Ajustei font-size para 1.1em */
+}
+
+
+#instrutor {
+    background-color: #ecf0f1;
+    /* Manter cor específica */
+}
+
+#instrutor h2 {
+    color: var(--primary-color);
+    margin-bottom: 1em;
+    font-size: 2em;
+}
+
+#instrutor article {
+    background-color: var(--white-color);
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    max-width: 800px; /* Limita largura para telas grandes */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+#instrutor article > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#instrutor article img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 1em;
+}
+
+#instrutor article h3 {
+    color: var(--secondary-color);
+    margin-top: 0;
+    font-size: 1.8em;
+}
+
+#instrutor article p {
+    font-weight: bold;
+    color: #555;
+    /* Manter cor específica */
+    margin-bottom: 0.5em;
+}
+
+#instrutor article p:last-child {
+    font-weight: normal;
+    text-align: justify;
+    font-size: 1.1em; /* Ajustei font-size para 1.1em */
+}
+
+
+#depoimentos {
+    background-color: var(--background-color);
+}
+
+#depoimentos h2 {
+    color: var(--primary-color);
+    margin-bottom: 1em;
+    font-size: 2em;
+}
+
+#depoimentos > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza depoimentos horizontalmente */
+    max-width: 1200px; /* Limita largura para telas grandes */
+    margin: 0 auto; /* Centraliza container de depoimentos */
+}
+
+#depoimentos article {
+    flex: 1 1 400px;
+    background-color: var(--white-color);
+    padding: 1.5em;
+    border-radius: 8px;
+    margin: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#depoimentos article img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1em;
+}
+
+#depoimentos article p {
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 1em;
+    font-size: 1.1em; /* Ajustei font-size para 1.1em */
+}
+
+#depoimentos article p:last-child {
+    font-weight: bold;
+    font-size: 1.1em; /* Ajustei font-size para 1.1em */
+}
+
+
+#inscreva-se h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+#inscreva-se > p {
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+}
+#inscreva-se > p:nth-child(2) {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 1.5em;
+}
+
+#inscreva-se a {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 1em 2em;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#inscreva-se #contato {
+    margin-top: 3em;
+    padding: 2em;
+    text-align: center;
+    background-color: var(--secondary-color);
+    color: var(--white-color);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2em;
+    max-width: 800px; /* Limita largura para telas grandes */
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto; /* Centraliza container de contato */
+}
+
+#inscreva-se #contato h2 {
+    color: var(--white-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5em;
+    margin-bottom: 0.5em;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+#inscreva-se #contato p {
+    font-size: 1.1em;
+    margin-bottom: 1em;
+    font-weight: 500;
+}
+
+#inscreva-se #contato address {
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+
+footer {
+    background-color: #333;
+    /* Manter cor específica */
+    color: var(--white-color);
+    text-align: center;
+    padding: 1em 0;
+    font-size: 0.9em;
+    /* Posicionamento fixo na parte inferior da tela */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; /* Garante que o footer fique acima de outros conteúdos */
+}
