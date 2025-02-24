@@ -38,7 +38,7 @@ header {
 header h1 {
     font-size: 3em;
     font-weight: 900;
-    color: yellow;
+    color: var(--background-color);
 }
 
 header p {
